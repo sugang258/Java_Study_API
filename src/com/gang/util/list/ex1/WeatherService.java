@@ -95,7 +95,7 @@ public class WeatherService {
 		CityDTO cityDTO = new CityDTO();
 		
 		for(int i=0;i<ar.size();i++) {
-			if(name.equals(ar.get(i)) ) {
+			if(name.equals(ar.get(i).getName()) ) {
 				ar.remove(i);
 				break;
 			}
@@ -115,7 +115,7 @@ public class WeatherService {
 		CityDTO cityDTO = new CityDTO();
 		
 		for(int i=0;i<ar.size();i++) {
-			if(name.equals(ar.get(i))) {
+			if(name.equals(ar.get(i).getName())) {
 				System.out.println(ar.get(i));
 			}
 		}
