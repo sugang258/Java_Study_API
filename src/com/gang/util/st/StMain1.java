@@ -13,7 +13,12 @@ public class StMain1 {
 		
 		while(st.hasMoreTokens()) {
 			//parsing
-			System.out.println(st.nextToken());
+			String token = st.nextToken();
+			System.out.println(token);
+			token = st.nextToken();
+			System.out.println(token);
+			System.out.println("==============");
+			
 			
 		}
 		
