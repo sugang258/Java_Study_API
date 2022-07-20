@@ -14,7 +14,8 @@ public class WeatherView {
 			//메세지(String) 하나를 받아서 출력
 	public void view(ArrayList<CityDTO> ar) {
 		for(int i=0;i<ar.size();i++) {
-			System.out.println(ar.get(i));
+			CityDTO cityDTO = ar.get(i);
+			this.view(cityDTO);
 		}
 		
 	}

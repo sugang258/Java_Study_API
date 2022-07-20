@@ -19,6 +19,7 @@ public class WeatherController {
 		WeatherView wv = new WeatherView();
 		
 		boolean check = true;
+		while(check) {
 		
 		System.out.println("1. 날씨정보 초기화");
 		System.out.println("2. 전국날씨 출력");
@@ -28,28 +29,33 @@ public class WeatherController {
 		System.out.println("6. 종료");
 		
 		int num = sc.nextInt();
-		while(check) {
-		if(num == 1) {
+		switch(num) {
+		case 1:
 			ws.init(ar);
+			break;
 			
-		}else if(num == 2) {
+		case 2:
 			wv.view(ar);
+			break;
 		
-		}else if(num == 3) {
+		case 3:
 			ws.find(ar);
+			break;
 			
-		}else if(num == 4) {
+		case 4:
 			ws.add(ar);
+			break;
 			
-		}else if(num == 5) {
+		case 5:
 			ws.remove(ar);
+			break;
 			
-		}else {
+		case 6:
 			System.out.println("종료");
 			check =! check;
 		}
 		}
 		
-	}
+	}}
 
-}
+
