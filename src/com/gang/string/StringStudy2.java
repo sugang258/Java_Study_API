@@ -24,7 +24,7 @@ public class StringStudy2 {
 			System.out.println("이미지파일 확인");
 			break;
 			
-			default:
+		default:
 				System.out.println("이미지파일 아님");
 			
 		}

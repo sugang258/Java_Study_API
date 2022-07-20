@@ -23,12 +23,15 @@ public class StringMain1 {
 		//System.out.println(c);
 		//c = str.charAt(0);
 		//System.out.println(c);
-		
+		/*
 		StringStudy2 s2 = new StringStudy2();
 		s2.studyIndexOf();
 		
 		s2.studyIndexOfEx1();
 		s2.ex2();
+		*/
+		StringStudy3 s3 = new StringStudy3();
+		s3.studySplit3();
 	}
 
 }
