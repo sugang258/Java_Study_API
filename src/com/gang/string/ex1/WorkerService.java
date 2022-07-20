@@ -1,5 +1,7 @@
 package com.gang.string.ex1;
 
+import java.util.StringTokenizer;
+
 public class WorkerService {
 	//private String info;
 	
@@ -14,12 +16,35 @@ public class WorkerService {
 		
 	}
 	
-	public WorkerDTO [] init() {
+	public WorkerDTO[] init() {
 		//info 파싱해서 workerDTO에 대입하고
 		//WorkerDTO를 모은배열을 리턴
 		String info = sb.toString();
 		String newInfo = info.replace(",", "-");
 		
+		
+		StringTokenizer st = new StringTokenizer(newInfo,"-");
+		
+		WorkerDTO [] workerDTOs = new WorkerDTO[st.countTokens()/4];
+		
+		int index = 0;
+		
+		
+		while(st.hasMoreTokens()) {
+			WorkerDTO workerDTO = new WorkerDTO();
+			workerDTO.setName(st.nextToken());
+			workerDTO.setDepartment(st.nextToken());
+			workerDTO.setJob(st.nextToken());
+			workerDTO.setPhone(st.nextToken());
+			workerDTOs [index] = workerDTO;
+			index++;
+			
+			
+			
+		}
+		
+		
+		/*
 		String [] infos = newInfo.split("-");
 		
 		WorkerDTO [] workerDTOs = new WorkerDTO[infos.length/4];
@@ -35,8 +60,9 @@ public class WorkerService {
 			workerDTO.setPhone(infos[++i].trim());
 		}
 		
-		
+		*/
 		return workerDTOs;
+		
 	}
 
 }
