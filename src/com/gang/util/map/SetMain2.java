@@ -15,7 +15,7 @@ public class SetMain2 {
 		
 		
 		for(int i =0; i<6 ; i++) {
-			int num = random.nextInt(45);
+			int num = random.nextInt(45)+1;
 			hashSet.add(num);
 		}
 		
