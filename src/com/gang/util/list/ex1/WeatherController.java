@@ -80,6 +80,7 @@ public class WeatherController {
 		case 6:
 			System.out.println("종료");
 			check =! check;
+			break;
 		}
 		}
 		

@@ -33,9 +33,9 @@ public class WeatherService {
 	}
 	public void init(ArrayList<CityDTO> ar) {
 		String info = sb.toString();
-		info = info.replace(",", "-");
+		info = info.replace("-", ",");
 		
-		StringTokenizer st = new StringTokenizer(info,"-");
+		StringTokenizer st = new StringTokenizer(info,",");
 		
 		while(st.hasMoreTokens()) {
 			CityDTO cityDTO = new CityDTO();
@@ -90,11 +90,11 @@ public class WeatherService {
 		
 		String name;
 		System.out.println("삭제할 도시 이름을 입력하세요");
-		name = sc.next();
+		name = sc.next().toUpperCase();
 		boolean r = false;
 				
 		for(int i=0;i<ar.size();i++) {
-			if(name.equals(ar.get(i).getName()) ) {
+			if(name.equals(ar.get(i).getName().toUpperCase()) ) {
 				ar.remove(i);
 				r = !r;
 				break;
@@ -115,7 +115,7 @@ public class WeatherService {
 		CityDTO cityDTO = null;
 		String name;
 		System.out.println("검색할 도시명을 입력하세요");
-		name = sc.next();
+		name = sc.next().toLowerCase();
 		/*
 		for(int i=0;i<ar.size();i++) {
 			if(name.equals(ar.get(i).getName())) {
@@ -124,7 +124,7 @@ public class WeatherService {
 		}
 		*/
 		for(CityDTO cy : ar) {
-			if(name.equals(cy.getName())) {
+			if(name.equals(cy.getName().toLowerCase())) {
 				cityDTO = cy;
 				break;
 			}
