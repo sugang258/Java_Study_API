@@ -2,6 +2,7 @@ package com.gang.util.list.ex1;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class WeatherService {
 	
@@ -30,9 +31,21 @@ public class WeatherService {
 		//find
 		//도시명을 입력받아서 리스트에서 검색 후 리턴
 	}
-	public ArrayList<CityDTO> init(ArrayList<CityDTO> ar) {
+	public void init(ArrayList<CityDTO> ar) {
 		String info = sb.toString();
-		String newInfo = info.replace(",", "-");
+		info = info.replace(",", "-");
+		
+		StringTokenizer st = new StringTokenizer(info,"-");
+		
+		while(st.hasMoreTokens()) {
+			CityDTO cityDTO = new CityDTO();
+			cityDTO.setName(st.nextToken());
+			cityDTO.setGion(Double.parseDouble(st.nextToken()));
+			cityDTO.setHum(Integer.parseInt(st.nextToken()));
+			cityDTO.setStatus(st.nextToken());
+			ar.add(cityDTO);
+		}
+		/*
 		CityDTO cityDTO = new CityDTO();
 		
 		
@@ -49,78 +62,74 @@ public class WeatherService {
 			ar.add(cityDTO);
 		}
 		wv.view(ar);
+		*/
 		
 		//return wv.view(ar);
-		return ar;
+		
 		
 		
 	}
 	
-	public ArrayList<CityDTO> add(ArrayList<CityDTO> ar) {
-		
-		String name;
-		double gion;
-		int hum;
-		String status;
-		
-		System.out.println("지역 이름을 입력하세요");
-		name = sc.next();
-		System.out.println("기온을 입력하세요");
-		gion = sc.nextDouble();
-		System.out.println("습도를 입력하세요");
-		hum = sc.nextInt();
-		System.out.println("상태를 입력하세요");
-		status = sc.next();
+	public boolean add(ArrayList<CityDTO> ar) {
 		
 		CityDTO cityDTO = new CityDTO();
-		cityDTO.setName(name);
-		cityDTO.setGion(gion);
-		cityDTO.setHum(hum);
-		cityDTO.setStatus(status);
 		
-		ar.add(cityDTO);
+		System.out.println("지역 이름을 입력하세요");
+		cityDTO.setName(sc.next());
+		System.out.println("기온을 입력하세요");
+		cityDTO.setGion(sc.nextDouble());
+		System.out.println("습도를 입력하세요");
+		cityDTO.setHum(sc.nextInt());
+		System.out.println("상태를 입력하세요");
+		cityDTO.setStatus(sc.next());
 		
-		wv.view(ar);
-		
-		return ar;
-		
+		return ar.add(cityDTO);
 	}
 	
-	public ArrayList<CityDTO> remove(ArrayList<CityDTO> ar) {
+	public boolean remove(ArrayList<CityDTO> ar) {
 		
 		String name;
 		System.out.println("삭제할 도시 이름을 입력하세요");
 		name = sc.next();
-		
-		CityDTO cityDTO = new CityDTO();
-		
+		boolean r = false;
+				
 		for(int i=0;i<ar.size();i++) {
 			if(name.equals(ar.get(i).getName()) ) {
 				ar.remove(i);
+				r = !r;
 				break;
 			}
 		}
-		wv.view(ar);
-
-		
-		return ar;
-		
+		return r;
+		/*
+		 * for(CityDTO cityDTO : ar) {
+		 * 		if(name.equals(cityDTO.getName())) {
+		 * 			ar.remove(cityDTO);
+		 * 			break;
+		 * 		}
+		 * }
+		 */
 	}
 	
-	public ArrayList<CityDTO> find(ArrayList<CityDTO> ar) {
-		
+	public CityDTO find(ArrayList<CityDTO> ar) {
+		CityDTO cityDTO = null;
 		String name;
 		System.out.println("검색할 도시명을 입력하세요");
 		name = sc.next();
-		CityDTO cityDTO = new CityDTO();
-		
+		/*
 		for(int i=0;i<ar.size();i++) {
 			if(name.equals(ar.get(i).getName())) {
 				System.out.println(ar.get(i));
 			}
 		}
-		
-		return ar;
+		*/
+		for(CityDTO cy : ar) {
+			if(name.equals(cy.getName())) {
+				cityDTO = cy;
+				break;
+			}
+		}
+		return cityDTO;
 		
 	}
 

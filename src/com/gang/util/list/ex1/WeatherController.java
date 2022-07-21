@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeatherController {
+	private WeatherService ws;
+	private WeatherView wv;
+	//결합도가 강하다(높다) : 자체에서 객체 생성
+	//결합도가 느슨하다(낮다) : 매개변수를 통해서 만들어진 객체를 주입
+	//					  :생성자의 매개변수, 	
+	
+	public WeatherController() {
+		this.ws = new WeatherService();
+		this.wv = new WeatherView();
+	}
+	
 	//WeatherController
 			//start
 			//1. 날씨정보 초기화 - init 호출
@@ -15,8 +26,8 @@ public class WeatherController {
 	public void start() {
 		ArrayList<CityDTO> ar = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
-		WeatherService ws = new WeatherService();
-		WeatherView wv = new WeatherView();
+		//WeatherService ws = new WeatherService();
+		//WeatherView wv = new WeatherView();
 		
 		boolean check = true;
 		while(check) {
@@ -29,6 +40,7 @@ public class WeatherController {
 		System.out.println("6. 종료");
 		
 		int num = sc.nextInt();
+		
 		switch(num) {
 		case 1:
 			ws.init(ar);
@@ -39,15 +51,30 @@ public class WeatherController {
 			break;
 		
 		case 3:
-			ws.find(ar);
+			CityDTO cityDTO = ws.find(ar);
+			if(cityDTO != null) {
+				wv.view(cityDTO);
+			}else {
+				wv.view("잘못된 도시명이다아");
+			}
 			break;
 			
 		case 4:
-			ws.add(ar);
+			boolean result = ws.add(ar);
+			String message = "추가 실패";
+			if(result) {
+				message = "추가 성공";
+			}
+			wv.view(message);
 			break;
 			
 		case 5:
-			ws.remove(ar);
+			boolean result1 = ws.remove(ar);
+			String message1 = "추가 실패";
+			if(result1) {
+				message1 = "추가 성공";
+			}
+			wv.view(message1);
 			break;
 			
 		case 6:

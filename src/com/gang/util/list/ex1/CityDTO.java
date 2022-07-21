@@ -30,16 +30,4 @@ public class CityDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public void setGion(String trim) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void setHum(String trim) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
-
 }
