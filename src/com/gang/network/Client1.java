@@ -12,6 +12,8 @@ import java.util.Scanner;
 public class Client1 {
 
 	public void send() throws Exception {
+		boolean check = true;
+		while(check) {
 		Scanner sc = new Scanner(System.in);
 		Socket socket = new Socket("192.168.7.50",8282);
 		System.out.println("Server 접속 완료");
@@ -35,12 +37,16 @@ public class Client1 {
 		message = br.readLine();
 		System.out.println("Server : " + message);
 		
-		
+		if(message == "q") {
+			check =! check;
 		//자원해제
 		bw.close();
 		ow.close();
 		os.close();
 		socket.close();
+		break;
+		}
+		}
 		
 		
 		

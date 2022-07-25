@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class Server1 {
 
 	public void receive() throws IOException {
+		boolean check = true;
+		while(check) {
 		Scanner sc = new Scanner(System.in);
 		ServerSocket serverSocket = new ServerSocket(8282);
 		//서버 오픈하고 Client의 접속을 기다림
@@ -41,10 +43,15 @@ public class Server1 {
 		bw.write(message + "\r\n");
 		bw.flush();
 		
+		if(message == "q") {
+			check =! check;
 		br.close();
 		ir.close();
 		is.close();
 		socket.close();
 		serverSocket.close();
+		break;
+		}
+		}
 	}
 }
