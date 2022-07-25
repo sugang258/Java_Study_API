@@ -5,10 +5,10 @@ public class ClientMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Client Start");
-		Client1 c1 = new Client1();
+		Client2 c1 = new Client2();
 		
 		try {
-			c1.send();
+			c1.getFood();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

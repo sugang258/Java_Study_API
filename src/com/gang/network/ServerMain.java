@@ -8,10 +8,10 @@ public class ServerMain {
 		// TODO Auto-generated method stub
 		System.out.println("Server Start");
 		
-		Server1 s1 = new Server1();
+		Server2 s1 = new Server2();
 		
 		try {
-			s1.receive();
+			s1.getFood();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
